@@ -4,7 +4,7 @@ import pygame, random
 pygame.init()
 
 #Set display surface
-WINDOW_WIDTH = 800
+WINDOW_WIDTH = 1600
 WINDOW_HEIGHT = 600
 display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Sprite Goups!")
@@ -35,8 +35,23 @@ class Monster(pygame.sprite.Sprite):
 #Create a monster group and add 10 monsters
 # Group makes it easier to test, update and
 # draw many sprites at once
+"""
+pygame.sprite.Group.update() and pygame.sprite.Group.draw() are methods which are provided 
+by pygame.sprite.Group. The former delegates the to the update method of the contained 
+pygame.sprite.Sprites - you have to implement the method.
+
+pygame.sprite.Group.update():
+Calls the update() method on all Sprites in the Group.
+
+The later uses the image and rect attributes of the contained pygame.sprite.Sprites to draw 
+the objects - you have to ensure that the pygame.sprite.Sprites have the required attributes
+
+pygame.sprite.Group.draw():
+Draws the contained Sprites to the Surface argument. This uses the Sprite.image attribute 
+for the source surface, and Sprite.rect for the position.
+"""
 monster_group = pygame.sprite.Group()
-for i in range(10):
+for i in range(20):
     monster = Monster(i*64, 10)
     monster_group.add(monster)
 
